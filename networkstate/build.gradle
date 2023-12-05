@@ -1,0 +1,8 @@
+
+apply from: "$buildGradlePath/build-library-android.gradle"
+
+dependencies {
+    api libs.kotlinx.coroutines.android
+    api libs.androidx.lifecycle.runtime
+    api libs.androidx.appcompat
+}

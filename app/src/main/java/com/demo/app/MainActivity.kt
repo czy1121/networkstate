@@ -16,11 +16,5 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "network available now", Toast.LENGTH_SHORT).show()
         }
 
-        networkType
-        isNetworkAvailable
-        isVpnConnected
-        isWifiConnected
-        isMobileConnected
-
     }
 }

@@ -18,7 +18,7 @@ repositories {
     maven { url "https://gitee.com/ezy/repo/raw/cosmo/"}
 }
 dependencies {
-    implementation "me.reezy.cosmo:network-state:0.7.0"
+    implementation "me.reezy.cosmo:networkstate:0.8.0"
 }
 ```
 

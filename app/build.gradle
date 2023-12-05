@@ -1,8 +1,8 @@
 
-apply from: "$buildGradlePath/build-library-demo.gradle"
+apply from: "$buildGradlePath/build-demo.gradle"
 
 
 dependencies {
 
-    implementation project(":network-state")
+    implementation project(":networkstate")
 }

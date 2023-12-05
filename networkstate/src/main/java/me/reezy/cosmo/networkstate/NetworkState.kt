@@ -5,13 +5,16 @@ import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 object NetworkState {
@@ -39,8 +42,10 @@ object NetworkState {
 
     fun onNetworkAvailable(owner: LifecycleOwner, block: () -> Unit) {
         owner.lifecycleScope.launch {
-            flowAvailable.flowWithLifecycle(owner.lifecycle).collect {
-                block()
+            owner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                flowAvailable.collect {
+                    block()
+                }
             }
         }
     }
